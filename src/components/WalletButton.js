@@ -6,7 +6,8 @@ function WalletButton({ setBudget }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setBudget((oldBudget) => oldBudget + Number(increaseAmount));
+    const amount = Math.round(parseFloat(increaseAmount) * 100) / 100;
+    setBudget((oldBudget) => +(oldBudget + amount).toFixed(2));
   };
 
   const handleClick = () => {
@@ -16,7 +17,9 @@ function WalletButton({ setBudget }) {
     <div
       style={{ marginLeft: "auto", marginRight: "auto", textAlign: "center" }}
     >
-      <button onClick={handleClick}>More money!</button>
+      <button onClick={handleClick}>
+        {isFormShown ? "Hide Form" : "More Money"}
+      </button>
       {isFormShown && (
         <form onSubmit={handleSubmit}>
           <label>Add Amount to Wallet: </label>
