@@ -6,6 +6,7 @@ function SushiContainer({
   sushi,
   setDisplayedSushiIndex,
   displayedSushiIndex,
+  setEatenSushiCount,
 }) {
   return (
     <div className="belt">
@@ -14,7 +15,10 @@ function SushiContainer({
         .map((oneSushi) => (
           <Sushi key={oneSushi.id} sushi={oneSushi} />
         ))}
-      <MoreButton setDisplayedSushiIndex={setDisplayedSushiIndex} />
+      <MoreButton
+        setDisplayedSushiIndex={setDisplayedSushiIndex}
+        setEatenSushiCount={setEatenSushiCount}
+      />
     </div>
   );
 }
