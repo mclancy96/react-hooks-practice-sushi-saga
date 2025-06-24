@@ -7,6 +7,8 @@ function SushiContainer({
   setDisplayedSushiIndex,
   displayedSushiIndex,
   setEatenSushiPlates,
+  budget,
+  setBudget,
 }) {
   return (
     <div className="belt">
@@ -17,6 +19,8 @@ function SushiContainer({
             key={oneSushi.id}
             sushi={oneSushi}
             setEatenSushiPlates={setEatenSushiPlates}
+            budget={budget}
+            setBudget={setBudget}
           />
         ))}
       <MoreButton setDisplayedSushiIndex={setDisplayedSushiIndex} />
