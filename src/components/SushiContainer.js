@@ -23,7 +23,10 @@ function SushiContainer({
             setBudget={setBudget}
           />
         ))}
-      <MoreButton setDisplayedSushiIndex={setDisplayedSushiIndex} />
+      <MoreButton
+        setDisplayedSushiIndex={setDisplayedSushiIndex}
+        sushi={sushi}
+      />
     </div>
   );
 }

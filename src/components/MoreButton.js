@@ -1,8 +1,13 @@
 import React from "react";
 
-function MoreButton({ setDisplayedSushiIndex }) {
+function MoreButton({ setDisplayedSushiIndex, sushi }) {
   const handleClick = () => {
-    setDisplayedSushiIndex((currIndex) => currIndex + 4);
+    setDisplayedSushiIndex((currIndex) => {
+      if (currIndex + 4 >= sushi.length) {
+        return 0;
+      }
+      return currIndex + 4;
+    });
   };
   return <button onClick={handleClick}>More sushi!</button>;
 }

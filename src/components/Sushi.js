@@ -1,13 +1,14 @@
 import { useState } from "react";
 
 function Sushi({ sushi, setEatenSushiPlates, budget, setBudget }) {
-  const [isEaten, setIsEaten] = useState(false);
+  const [isEaten, setIsEaten] = useState(sushi.isEaten);
 
   const handleClick = () => {
     if (!isEaten && sushi.price <= budget) {
       setIsEaten((isEaten) => !isEaten);
       setEatenSushiPlates((currPlates) => [...currPlates, sushi]);
       setBudget((currBudget) => currBudget - sushi.price);
+      sushi.isEaten = true;
     }
   };
   return (
