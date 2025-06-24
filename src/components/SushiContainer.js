@@ -1,4 +1,3 @@
-import React from "react";
 import MoreButton from "./MoreButton";
 import Sushi from "./Sushi";
 

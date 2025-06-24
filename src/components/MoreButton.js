@@ -1,5 +1,3 @@
-import React from "react";
-
 function MoreButton({ setDisplayedSushiIndex, sushi }) {
   const handleClick = () => {
     setDisplayedSushiIndex((currIndex) => {

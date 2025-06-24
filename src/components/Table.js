@@ -1,5 +1,3 @@
-import React from "react";
-
 function Table({ plates = [], budget }) {
   // renders an empty plate for every element in the array
   const emptyPlates = plates.map((_, index) => (
