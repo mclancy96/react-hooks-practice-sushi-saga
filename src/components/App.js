@@ -7,7 +7,7 @@ const API = "http://localhost:3001/sushis";
 function App() {
   const [sushi, setSushi] = useState([]);
   const [displayedSushiIndex, setDisplayedSushiIndex] = useState(0);
-  const [eatenSushiCount, setEatenSushiCount] = useState(0);
+  const [eatenSushiPlates, setEatenSushiPlates] = useState([]);
   useEffect(() => {
     fetch(API)
       .then((r) => r.json())
@@ -19,12 +19,9 @@ function App() {
         sushi={sushi}
         displayedSushiIndex={displayedSushiIndex}
         setDisplayedSushiIndex={setDisplayedSushiIndex}
-        setEatenSushiCount={setEatenSushiCount}
+        setEatenSushiPlates={setEatenSushiPlates}
       />
-      <Table
-        eatenSushiCount={eatenSushiCount}
-        setEatenSushiCount={setEatenSushiCount}
-      />
+      <Table plates={eatenSushiPlates} />
     </div>
   );
 }
