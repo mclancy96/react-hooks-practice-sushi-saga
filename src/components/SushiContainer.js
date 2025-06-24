@@ -12,12 +12,9 @@ function SushiContainer({
       {sushi
         .slice(displayedSushiIndex, displayedSushiIndex + 4)
         .map((oneSushi) => (
-          <Sushi sushi={oneSushi} />
+          <Sushi key={oneSushi.id} sushi={oneSushi} />
         ))}
-      <MoreButton
-        displayedSushiIndex={displayedSushiIndex}
-        setDisplayedSushiIndex={setDisplayedSushiIndex}
-      />
+      <MoreButton setDisplayedSushiIndex={setDisplayedSushiIndex} />
     </div>
   );
 }
