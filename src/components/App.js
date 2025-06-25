@@ -15,6 +15,29 @@ function App() {
       .then((r) => r.json())
       .then(setSushi);
   }, []);
+
+  // Handler functions
+  const handleMoreSushi = () => {
+    setDisplayedSushiIndex((currIndex) => {
+      if (currIndex + 4 >= sushi.length) {
+        return 0;
+      }
+      return currIndex + 4;
+    });
+  };
+
+  const handleEatSushi = (sushiItem) => {
+    if (!sushiItem.isEaten && sushiItem.price <= budget) {
+      setEatenSushiPlates((currPlates) => [...currPlates, sushiItem]);
+      setBudget((currBudget) => currBudget - sushiItem.price);
+      sushiItem.isEaten = true;
+    }
+  };
+
+  const handleAddBudget = (amount) => {
+    setBudget((oldBudget) => +(oldBudget + amount).toFixed(2));
+  };
+
   return (
     <div
       className="app-container"
@@ -30,17 +53,14 @@ function App() {
         <SushiContainer
           sushi={sushi}
           displayedSushiIndex={displayedSushiIndex}
-          setDisplayedSushiIndex={setDisplayedSushiIndex}
-          setEatenSushiPlates={setEatenSushiPlates}
+          onMoreSushi={handleMoreSushi}
+          onEatSushi={handleEatSushi}
           budget={budget}
-          setBudget={setBudget}
         />
         <Table plates={eatenSushiPlates} budget={budget} />
       </div>
-      <div
-        style={{ marginTop: "20px" }}
-      >
-        <WalletButton setBudget={setBudget} />
+      <div style={{ marginTop: "20px" }}>
+        <WalletButton onAddBudget={handleAddBudget} />
       </div>
     </div>
   );

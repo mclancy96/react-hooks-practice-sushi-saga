@@ -3,11 +3,10 @@ import Sushi from "./Sushi";
 
 function SushiContainer({
   sushi,
-  setDisplayedSushiIndex,
   displayedSushiIndex,
-  setEatenSushiPlates,
+  onMoreSushi,
+  onEatSushi,
   budget,
-  setBudget,
 }) {
   return (
     <div className="belt">
@@ -17,15 +16,11 @@ function SushiContainer({
           <Sushi
             key={oneSushi.id}
             sushi={oneSushi}
-            setEatenSushiPlates={setEatenSushiPlates}
+            onEatSushi={onEatSushi}
             budget={budget}
-            setBudget={setBudget}
           />
         ))}
-      <MoreButton
-        setDisplayedSushiIndex={setDisplayedSushiIndex}
-        sushi={sushi}
-      />
+      <MoreButton onMoreSushi={onMoreSushi} sushi={sushi} />
     </div>
   );
 }

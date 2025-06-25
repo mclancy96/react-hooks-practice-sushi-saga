@@ -1,13 +1,16 @@
 import { useState } from "react";
 
-function WalletButton({ setBudget }) {
+function WalletButton({ onAddBudget }) {
   const [isFormShown, setIsFormShown] = useState(false);
   const [increaseAmount, setIncreaseAmount] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const amount = Math.round(parseFloat(increaseAmount) * 100) / 100;
-    setBudget((oldBudget) => +(oldBudget + amount).toFixed(2));
+    if (!isNaN(amount) && amount > 0) {
+      onAddBudget(amount);
+      setIncreaseAmount("");
+    }
   };
 
   const handleClick = () => {
